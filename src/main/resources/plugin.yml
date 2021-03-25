@@ -1,0 +1,11 @@
+name: OnlineRewards
+version: 1.0
+main: me.manaki.plugin.onlinerewards.OnlineRewards
+api-version: 1.16
+commands:
+  onlinerewards:
+    description: MankaiStep
+    permission: 'onlinerewards.admin'
+  onlinereward:
+    description: Quà online
+    aliases: [quaonline, qdn]

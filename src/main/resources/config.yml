@@ -1,0 +1,16 @@
+reward:
+  r1:
+    icon:
+      material: STONE
+      model-data: 0
+      name: '&6&lCục đá vĩnh cửu'
+      lore:
+       - '&7&oChả có con cặc gì'
+    commands:
+      - shops load cucdavinhcuu 1 %player%
+
+# Đơn vị: giây
+online-rewards:
+  20: r1
+  30: r2
+  40: r3
