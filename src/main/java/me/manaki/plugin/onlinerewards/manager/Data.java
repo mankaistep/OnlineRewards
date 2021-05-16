@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
@@ -41,11 +42,15 @@ public class Data {
     }
 
     public void checkAndSave() {
-        if (System.currentTimeMillis() - this.last > 86400000) {
+        var calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(this.last);
+        int lastDay = calendar.get(Calendar.DAY_OF_YEAR);
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        int currentDay = calendar.get(Calendar.DAY_OF_YEAR);
+        if (lastDay != currentDay) {
             this.received.clear();
             this.last = System.currentTimeMillis();
         }
-
         save();
     }
 

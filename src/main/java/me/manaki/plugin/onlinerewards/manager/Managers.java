@@ -22,6 +22,8 @@ public class Managers {
 
     private static final Map<String, Long> joinTimes = Maps.newHashMap();
 
+    private static final Map<String, Long> lastOnlineMilis = Maps.newHashMap();
+
     public static Map<Long, String> getAllRewards() {
         return Maps.newHashMap(onlinerewards);
     }
@@ -67,11 +69,12 @@ public class Managers {
     }
 
     public static void quit(Player player) {
+        lastOnlineMilis.put(player.getName(), System.currentTimeMillis() - joinTimes.get(player.getName()));
         joinTimes.remove(player.getName());
     }
 
     public static long getOnline(Player player) {
-        return System.currentTimeMillis() - joinTimes.getOrDefault(player.getName(), System.currentTimeMillis());
+        return lastOnlineMilis.getOrDefault(player.getName(), 0L) + System.currentTimeMillis() - joinTimes.getOrDefault(player.getName(), System.currentTimeMillis());
     }
 
     public static List<String> getAvailables(Player player) {
