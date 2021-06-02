@@ -21,7 +21,6 @@ public class Managers {
     private static final Map<Long, String> onlinerewards = Maps.newHashMap();
 
     private static final Map<String, Long> joinTimes = Maps.newHashMap();
-
     private static final Map<String, Long> lastOnlineMilis = Maps.newHashMap();
 
     public static Map<Long, String> getAllRewards() {
@@ -69,7 +68,7 @@ public class Managers {
     }
 
     public static void quit(Player player) {
-        lastOnlineMilis.put(player.getName(), System.currentTimeMillis() - joinTimes.get(player.getName()));
+        lastOnlineMilis.put(player.getName(), lastOnlineMilis.getOrDefault(player.getName(), 0L) + System.currentTimeMillis() - joinTimes.get(player.getName()));
         joinTimes.remove(player.getName());
     }
 
