@@ -72,6 +72,14 @@ public class Managers {
         joinTimes.remove(player.getName());
     }
 
+    public static void newDay() {
+        joinTimes.clear();
+        lastOnlineMilis.clear();
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            join(player);
+        }
+    }
+
     public static long getOnline(Player player) {
         return lastOnlineMilis.getOrDefault(player.getName(), 0L) + System.currentTimeMillis() - joinTimes.getOrDefault(player.getName(), System.currentTimeMillis());
     }

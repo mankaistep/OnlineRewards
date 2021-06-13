@@ -50,7 +50,9 @@ public class Data {
         if (lastDay != currentDay) {
             this.received.clear();
             this.last = System.currentTimeMillis();
+            Managers.newDay();
         }
+
         save();
     }
 
